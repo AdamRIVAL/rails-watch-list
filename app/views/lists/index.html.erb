@@ -1,0 +1,17 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_url("cinema.webp")%>);">
+  <div class="container">
+    <h1>Save any kind of movies</h1>
+    <p>Classic.</p>
+  </div>
+</div>
+<div class="list-title">
+  <h4>My Lists</h4>
+  <%= link_to "Create a movie list", new_list_path %>
+</div>
+<ul class="movie-card-container">
+  <% @lists.each do |list| %>
+  <div class="movie-card">
+    <%= link_to list.name, list_path(list) %>
+  </div>
+  <% end %>
+</ul>
