@@ -1,7 +1,13 @@
-<h1><%= @list.name %></h1>
-
+<div class="banner" style="background-image: url('<%= cl_image_path @list.photo.key %>');">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
+<%# if @list.photo.attached? %>
+  <%##= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
+<%# end %>
 <%= link_to "Add a movie to the list", new_list_bookmark_path(@list)%>
-<ul class="d-flex">
+<ul class="movies-container">
   <% @movies.each do |movie| %>
     <div class="card mx-10" style="width: 22rem;">
       <img src="<%= movie.poster_url %>" class="card-img-top" alt="<%= movie.title %>" width="100">
@@ -20,4 +26,5 @@
 </ul>
 
 
+<%= link_to "Delete List", @list, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "button delete"%>
 <%= link_to "Back to lists", root_path%>

@@ -10,8 +10,12 @@
 </div>
 <ul class="movie-card-container">
   <% @lists.each do |list| %>
-  <div class="movie-card">
-    <%= link_to list.name, list_path(list) %>
-  </div>
+    <% if list.photo.attached? %>
+      <div class="movie-card" style="background-image: url('<%= cl_image_path list.photo.key, width: 500, height: 300, crop: :fill %>')">
+    <% else %>
+      <div class="movie-card">
+    <% end %>
+        <%= link_to list.name, list_path(list) %>
+      </div>
   <% end %>
 </ul>
