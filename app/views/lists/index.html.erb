@@ -16,6 +16,7 @@
       <div class="movie-card">
     <% end %>
         <%= link_to list.name, list_path(list) %>
+        <%= link_to "Delete List", list, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "button delete"%>
       </div>
   <% end %>
 </ul>
