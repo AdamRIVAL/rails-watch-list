@@ -3,10 +3,14 @@
     <h1><%= @list.name %></h1>
   </div>
 </div>
-<%# if @list.photo.attached? %>
-  <%##= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
-<%# end %>
-<%= link_to "Add a movie to the list", new_list_bookmark_path(@list)%>
+<%# <div class="add-movie-container">
+
+</div> %>
+
+<div class="list-title">
+  <h4>Movies :</h4>
+  <%= link_to "Add a movie to the list", new_list_bookmark_path(@list)%>
+</div>
 <ul class="movies-container">
   <% @movies.each do |movie| %>
     <div class="card mx-10" style="width: 22rem;">
@@ -25,6 +29,7 @@
   <% end %>
 </ul>
 
-
-<%= link_to "Delete List", @list, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "button delete"%>
-<%= link_to "Back to lists", root_path%>
+<div class="list-title">
+  <%= link_to "Delete List", @list, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "button-delete"%>
+  <%= link_to "Back to lists", root_path%>
+</div>
